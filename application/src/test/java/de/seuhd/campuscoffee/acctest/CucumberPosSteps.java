@@ -91,8 +91,10 @@ public class CucumberPosSteps {
         assertThat(retrievedPosList).isEmpty();
     }
 
-    // TODO: Add Given step for new scenario
-
+    @Given("an POS list with three entries")
+    public void anPosListWithThreeEntries() {
+        List<PosDto> retrievedPosList = retrievePos();
+    }
     // When -----------------------------------------------------------------------
 
     @When("I insert POS with the following elements")
@@ -102,7 +104,11 @@ public class CucumberPosSteps {
     }
 
     // TODO: Add When step for new scenario
+    @When("I update one POS by name")
+    public void iUpdateOnePOS(String name, String changes) {
+        PosDto oldPos = retrievePosByName(name);
 
+    }
     // Then -----------------------------------------------------------------------
 
     @Then("the POS list should contain the same elements in the same order")
